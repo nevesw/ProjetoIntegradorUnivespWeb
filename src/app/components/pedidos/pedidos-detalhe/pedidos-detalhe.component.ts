@@ -80,6 +80,8 @@ export class PedidosDetalheComponent implements OnInit {
         },
         () => this.spinner.hide(),
       );
+    }else{
+      this.pedido.dataPedido = new Date();
     }
   }
 
