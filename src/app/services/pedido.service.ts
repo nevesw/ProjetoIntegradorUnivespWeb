@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pedido } from '@app/models/Pedido';
+import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,28 +9,27 @@ import { Observable } from 'rxjs';
 })
 export class PedidoService {
 
-baseUrl = 'https://localhost:44353/api/aluno/';
 
 constructor(private http: HttpClient) { }
 
   public getPedidos(): Observable<Pedido[]>{
-    return this.http.get<Pedido[]>(this.baseUrl + 'lista_pedidos');
+    return this.http.get<Pedido[]>(`${environment.api}/pedido/lista_pedidos`);
   }
 
   public getPedidoById(id: number): Observable<Pedido>{
-    return this.http.get<Pedido>(`${this.baseUrl}busca_pedido/${id}`);
+    return this.http.get<Pedido>(`${environment.api}/pedido/busca_pedido/${id}`);
   }
 
   public postPedido(pedido: Pedido): Observable<Pedido>{
-    return this.http.post<Pedido>(this.baseUrl + 'cadastro_pedido', pedido);
+    return this.http.post<Pedido>(`${environment.api}/pedido/cadastro_pedido`, pedido);
   }
 
   public putPedido(id: number, pedido: Pedido): Observable<Pedido>{
-    return this.http.put<Pedido>(this.baseUrl + 'editar_pedido', pedido);
+    return this.http.put<Pedido>(`${environment.api}/pedido/editar_pedido`, pedido);
   }
 
   public deletePedido(id: number): Observable<any>{
-    return this.http.delete(`${this.baseUrl}deletar_pedido/${id}`);
+    return this.http.delete(`${environment.api}/pedido/deletar_pedido/${id}`);
   }
 
 }

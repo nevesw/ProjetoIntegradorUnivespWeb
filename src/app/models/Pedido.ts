@@ -1,5 +1,6 @@
 import { Aluno } from "./Aluno";
 import { Pagamento } from "./Pagamento";
+import { Produto } from "./Produto";
 
 
 export interface Pedido {
@@ -9,4 +10,5 @@ export interface Pedido {
   quantidade: number;
   pagamento: Pagamento;
   aluno: Aluno;
+  produto: Produto;
 }
