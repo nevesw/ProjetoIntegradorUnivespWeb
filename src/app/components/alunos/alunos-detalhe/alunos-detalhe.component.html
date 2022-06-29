@@ -73,7 +73,7 @@
          [ngClass]="{'is-invalid': f.profNome.errors && f.profNome.touched}"
          formControlName="profNome">
           <option value="" disabled>Escolha seu professor</option>
-          <option *ngFor="let prof of Profs" [ngValue]="prof.nome">{{prof.nome}}</option>
+          <option *ngFor="let prof of Profs" [value]="prof.id">{{prof.nome}}</option>
        </select>
        <div *ngIf="f.profNome.errors?.required" class="invalid-feedback">
          Nome do professor é obrigatório.

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apidev: 'https://localhost:7268',
-  api: 'https://api-projeto-dev.azurewebsites.net/api/'
+  apidev: 'https://api-projeto-dev.azurewebsites.net/api',
+  api: 'https://api-projeto-dev.azurewebsites.net/api'
 };
 
 /*
