@@ -9,7 +9,7 @@
           [ngClass]="{'is-invalid': f.prodPedido.errors && f.prodPedido.touched}"
           formControlName="prodPedido">
            <option value="" disabled>Escolha um produto</option>
-           <option *ngFor="let prod of produtos" [ngValue]="prod.id">{{prod.descricao}}</option>
+           <option *ngFor="let prod of produtos" [value]="prod.id">{{prod.descricao}}</option>
           </select>
           <div *ngIf="f.prodPedido.errors?.required" class="invalid-feedback">
             Escolha um produto para continuar.
@@ -33,7 +33,7 @@
           [ngClass]="{'is-invalid': f.alunoPedido.errors && f.alunoPedido.touched}"
           formControlName="alunoPedido">
            <option value="" disabled>Escolha um aluno</option>
-           <option *ngFor="let aluno of alunos" [ngValue]="aluno.id">{{aluno.nome}}</option>
+           <option *ngFor="let aluno of alunos" [value]="aluno.id">{{aluno.nome}}</option>
           </select>
           <div *ngIf="f.alunoPedido.errors?.required" class="invalid-feedback">
             Escolha um aluno para continuar.

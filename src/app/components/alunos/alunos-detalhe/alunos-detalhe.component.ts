@@ -69,12 +69,12 @@ export class AlunosDetalheComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.iniciaFormulario();
     this.carregarProfessores();
     this.carregarAluno();
-    this.validation();
   }
 
-  public validation(): void {
+  public iniciaFormulario(): void {
     this.form = this.fb.group({
       nome: ['',
       Validators.required
@@ -125,7 +125,7 @@ export class AlunosDetalheComponent implements OnInit {
       //colocar lista checkbox professores
       //this.aluno.professorId = 1; // getIdProfessorByName();
 
-      this.aluno.nomeProfessor = this.profNome?.value;
+      this.aluno.professorId = this.profNome?.value;
       this.aluno.dataAula = this.dataAula?.value;
       this.alunoService.postAluno(this.aluno).subscribe(
         () => this.toastr.success('Aluno salvo com Sucesso!', 'Sucesso'),
