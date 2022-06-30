@@ -1,5 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Professor } from '@app/models/Professor';
+import { ProfessorService } from '@app/services/professor.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -37,6 +39,7 @@ export class AlunosListaComponent implements OnInit {
 
   constructor(
     private alunoService: AlunoService,
+    private professorService: ProfessorService,
     private modalService: BsModalService,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService,
@@ -62,6 +65,24 @@ export class AlunosListaComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+
+  getNomeProfessor(id: any): string {
+    this.professorService.getProfessorById(id).subscribe(
+      (_professor: Professor) => {
+        return this.before(_professor.nome, ' ');
+      },
+      error => console.log(error)
+    );
+    return "Não cadastrado";
+  }
+
+  before (value: any, delimiter: any) {
+    value = value || ''
+
+    return delimiter === ''
+      ? value
+      : value.split(delimiter).shift()
   }
 
   openModal(event: any, template: TemplateRef<any>, alunoId: number): void {

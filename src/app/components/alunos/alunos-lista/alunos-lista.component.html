@@ -39,7 +39,7 @@
           <td>{{aluno.id}}</td>
           <td>{{aluno.nome}}</td>
           <td>{{aluno.numeroCelular}}</td>
-          <td>{{aluno.professor.nome}}</td>
+          <td>{{getNomeProfessor(aluno.id)}}</td>
           <td>{{aluno.cpf}}</td>
           <td>{{aluno.statusPagamento}}</td>
           <td>{{aluno.agendaAluno?.data | DateTimeFormatPipe}}</td>
