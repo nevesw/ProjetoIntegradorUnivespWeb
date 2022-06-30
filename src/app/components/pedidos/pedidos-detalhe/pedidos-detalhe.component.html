@@ -53,8 +53,14 @@
       <div class="form-row">
         <div class="form-group col-md-3">
           <label>Forma Pagamento</label>
-          <input type="text" class="form-control" formControlName="formaPagamento"
-          placeholder="">
+          <select class="form-select form-control"
+          formControlName="formaPagamento">
+           <option value="Cartão de crédito">Cartão de crédito</option>
+           <option value="Pix">Pix</option>
+           <option value="Cartão de débito">Cartão de débito</option>
+           <option value="Dinheiro">Dinheiro</option>
+           <option value="Boleto">Boleto</option>
+          </select>
         </div>
         <div class="form-group col-md-3">
           <label>Data pedido</label>
@@ -67,8 +73,14 @@
         </div>
         <div class="form-group col-md-3">
           <label>Plano</label>
-          <input type="text" class="form-control" formControlName="plano"
-          placeholder="">
+          <select class="form-select form-control"
+          formControlName="plano">
+          <option value="Plano Individual">Plano Individual</option>
+           <option value="Plano em grupo">Plano em grupo</option>
+           <option value="Plano instrutores">Plano instrutores</option>
+           <option value="Plano business">Plano business</option>
+           <option value="Plano Imersão">Plano Imersão</option>
+          </select>
         </div>
         <div class="form-group col-md-2">
           <label>Meses</label>

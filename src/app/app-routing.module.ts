@@ -64,8 +64,8 @@ const routes: Routes = [
       {path:'detalhe/:id', component: PedidosDetalheComponent},
     ]
   },
-  {path:'', redirectTo: 'alunos', pathMatch: 'full'},
-  {path:'**', redirectTo: 'alunos', pathMatch: 'full'}
+  {path:'', redirectTo: 'user/login', pathMatch: 'full'},
+  {path:'**', redirectTo: 'user/login', pathMatch: 'full'}
 ];
 
 @NgModule({
