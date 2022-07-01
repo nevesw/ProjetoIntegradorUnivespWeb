@@ -17,4 +17,15 @@ export class ProdutoService {
       );
   }
 
+  public getProdutoById(id: number): Observable<Produto>{
+    return this.http.get<Produto>(`${environment.api}/produto/busca_produto/${id}`);
+  }
+
+  public postProduto(pedido: Produto): Observable<Produto>{
+    return this.http.post<Produto>(`${environment.api}/produto/cadastro_produto`, pedido);
+  }
+
+  public deleteProduto(id: number): Observable<any>{
+    return this.http.delete(`${environment.api}/produto/deletar_produto/${id}`);
+  }
 }

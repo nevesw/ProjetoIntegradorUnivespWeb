@@ -48,6 +48,7 @@ export class AlunosListaComponent implements OnInit {
 
   public ngOnInit(): void {
     this.getAlunos();
+
      /** spinner starts on init */
      this.spinner.show();
 
@@ -63,18 +64,21 @@ export class AlunosListaComponent implements OnInit {
         this.alunos = _alunos
         this.alunosFiltrados = this.alunos
       },
-      error => console.log(error)
+      error => console.log(error),
+      () => this.getNomeProfessor()
     );
   }
 
-  getNomeProfessor(id: any): string {
-    this.professorService.getProfessorById(id).subscribe(
-      (_professor: Professor) => {
-        return this.before(_professor.nome, ' ');
-      },
-      error => console.log(error)
-    );
-    return "Não cadastrado";
+  getNomeProfessor() {
+    this.alunos.forEach(aluno => {
+      this.professorService.getProfessorById(aluno?.professorId).subscribe(
+        (_professor: Professor) => {
+          aluno.professor = _professor;
+          aluno.professor.nome = this.before(_professor.nome, ' ');
+        },
+        error => console.log(error)
+      );
+    });
   }
 
   before (value: any, delimiter: any) {

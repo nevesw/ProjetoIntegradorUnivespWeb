@@ -54,12 +54,13 @@
         <div class="form-group col-md-3">
           <label>Forma Pagamento</label>
           <select class="form-select form-control"
-          formControlName="formaPagamento">
-           <option value="Cartão de crédito">Cartão de crédito</option>
-           <option value="Pix">Pix</option>
-           <option value="Cartão de débito">Cartão de débito</option>
-           <option value="Dinheiro">Dinheiro</option>
-           <option value="Boleto">Boleto</option>
+          (change)="mudaPagamentoPedido($event)"
+          formControlName="pagamentoPedido">
+           <option value="1">Cartão de crédito</option>
+           <option value="2">Pix</option>
+           <option value="3">Cartão de débito</option>
+           <option value="4">Dinheiro</option>
+           <option value="5">Boleto</option>
           </select>
         </div>
         <div class="form-group col-md-3">

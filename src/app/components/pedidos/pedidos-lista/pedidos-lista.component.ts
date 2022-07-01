@@ -1,7 +1,11 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Aluno } from '@app/models/Aluno';
 import { Pedido } from '@app/models/Pedido';
+import { Produto } from '@app/models/Produto';
+import { AlunoService } from '@app/services/aluno.service';
 import { PedidoService } from '@app/services/pedido.service';
+import { ProdutoService } from '@app/services/produto.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -37,6 +41,8 @@ export class PedidosListaComponent implements OnInit {
 
   constructor(
     private pedidoService: PedidoService,
+    private alunoService: AlunoService,
+    private produtoService: ProdutoService,
     private modalService: BsModalService,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService,
@@ -60,10 +66,58 @@ export class PedidosListaComponent implements OnInit {
         this.pedidos = _pedidos;
         this.pedidosFiltrados = this.pedidos;
       },
-      (error: any) => console.log(error)
+      (error: any) => console.log(error),
+      () => this.preencheDescricaoPedido()
     );
   }
 
+  preencheDescricaoPedido() {
+    this.pedidos.forEach(pedido => {
+      console.log(pedido);
+      pedido.tipoPagamento = this.getTipoPagamento(pedido.pagamentoId);
+      this.alunoService.getAlunoById(pedido?.alunoId).subscribe(
+        (_aluno: Aluno) => {
+          pedido.aluno = _aluno;
+          pedido.aluno.nome = this.before(pedido.aluno.nome, ' ');
+        },
+        error => console.log(error)
+      );
+
+      this.produtoService.getProdutoById(pedido?.produtoId).subscribe(
+        (_produto: Produto) => {
+          pedido.produto = _produto;
+          pedido.descricao = this.before(pedido.produto.descricao, ' ');
+        },
+        error => console.log(error)
+      );
+
+    });
+  }
+
+  before (value: any, delimiter: any) {
+    value = value || ''
+
+    return delimiter === ''
+      ? value
+      : value.split(delimiter).shift()
+  }
+
+  getTipoPagamento(id: number): string{
+    switch (id) {
+      case 1:
+        return 'Cartão de crédito';
+      case 2:
+        return 'Pix';
+      case 3:
+        return 'Cartão de débito';
+      case 4:
+        return 'Dinheiro';
+      case 5:
+        return 'Boleto';
+      default:
+          return 'Não cadastrado';
+   }
+  }
   openModal(event: any, template: TemplateRef<any>, pedidoId: number): void {
     event.stopPropagation;
     this.pedidoId = pedidoId;

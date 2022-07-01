@@ -18,7 +18,7 @@ constructor(private http: HttpClient) { }
     return this.http.get<Professor[]>(`${environment.api}/professor/lista_professores`);
   }
 
-  public getProfessorById(id: number): Observable<Professor>{
+  public getProfessorById(id?: number): Observable<Professor>{
     return this.http.get<Professor>(`${environment.api}/professor/busca_professor/${id}`);
   }
 

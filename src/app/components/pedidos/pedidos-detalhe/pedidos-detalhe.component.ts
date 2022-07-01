@@ -27,7 +27,7 @@ export class PedidosDetalheComponent implements OnInit {
     return this.form.controls;
   }
   constructor(private fb: FormBuilder,
-    private  router: ActivatedRoute,
+    private router: ActivatedRoute,
     private alunoService: AlunoService,
     private pedidoService: PedidoService,
     private produtoService: ProdutoService,
@@ -53,7 +53,7 @@ export class PedidosDetalheComponent implements OnInit {
     ],
     aluno: ['',
     ],
-    formaPagamento: [''],
+    pagamentoPedido: [''],
     dataPedido:[''],
     plano: [''],
     quantidade: ['']
@@ -93,7 +93,6 @@ export class PedidosDetalheComponent implements OnInit {
   }
 
   public mudaProdutoPedido(e: any){
-    //alert(JSON.stringify(this.form.value));
     this.prodPedido?.setValue(e.target.value, {
       onlySelf: true
     });
@@ -113,8 +112,17 @@ export class PedidosDetalheComponent implements OnInit {
   }
 
   public mudaAlunoPedido(e: any){
-    //alert(JSON.stringify(this.form.value));
     this.alunoPedido?.setValue(e.target.value, {
+      onlySelf: true
+    });
+  }
+
+  public get pagamentoPedido() {
+    return this.form.get('pagamentoPedido');
+  }
+
+  public mudaPagamentoPedido(e: any){
+    this.pagamentoPedido?.setValue(e.target.value, {
       onlySelf: true
     });
   }
@@ -132,11 +140,10 @@ export class PedidosDetalheComponent implements OnInit {
     if(this.form.valid){
 
       this.pedido = { ... this.form.value};
-      //colocar lista checkbox professores
-      //this.aluno.professorId = 1; // getIdProfessorByName();
 
-      this.pedido.produto.id = this.prodPedido?.value;
-      this.pedido.aluno.id = this.alunoPedido?.value;
+      this.pedido.produtoId = this.prodPedido?.value;
+      this.pedido.alunoId = this.alunoPedido?.value;
+      this.pedido.pagamentoId = this.pagamentoPedido?.value;
 
       this.pedidoService.postPedido(this.pedido).subscribe(
         () => this.toastr.success('Pedido salvo com Sucesso!', 'Sucesso'),

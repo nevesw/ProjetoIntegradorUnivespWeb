@@ -5,4 +5,6 @@ export interface AgendaAluno {
   diaSemanaAulaAgendada: string;
   dataPrevistaAula?: Date;
   dataDisponivelAluno?: Date;
+  professor: string;
+  disponivel: string;
 }
