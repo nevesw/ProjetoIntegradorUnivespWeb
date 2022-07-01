@@ -1,0 +1,50 @@
+<div class="card rouded shadow-sm">
+  <form [formGroup]="form">
+    <div class="p-3">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Código Produto</label>
+          <input type="text" formControlName="codProduto" class="form-control" placeholder="Insira um código">
+        </div>
+        <div class="form-group col-md-6">
+          <label>Descrição</label>
+          <input type="text" formControlName="descricao" class="form-control" placeholder="Insira a descrição produto">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label>Quantidade</label>
+          <input type="text" formControlName="quantidade" class="form-control" placeholder="">
+        </div>
+        <div class="form-group col-md-4">
+          <label>Plano</label>
+          <select class="form-select form-control"
+          formControlName="plano">
+          <option value="Plano Individual">Plano Individual</option>
+           <option value="Plano em grupo">Plano em grupo</option>
+           <option value="Plano instrutores">Plano instrutores</option>
+           <option value="Plano business">Plano business</option>
+           <option value="Plano Imersão">Plano Imersão</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Preço</label>
+          <input type="text" formControlName="precoVenda" class="form-control" placeholder="">
+        </div>
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <div class="d-flex">
+        <button class="btn btn-outline-secondary mr-auto border" (click)="cancelarProduto()">
+          Cancelar
+        </button>
+        <button class="btn btn-success" (click)="salvarProduto()">
+          Salvar Produto
+        </button>
+      </div>
+    </div>
+  </form>
+
+</div>
+

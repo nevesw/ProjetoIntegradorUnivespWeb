@@ -39,6 +39,9 @@ import { AulasDetalheComponent } from './components/aulas/aulas-detalhe/aulas-de
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { PedidosDetalheComponent } from './components/pedidos/pedidos-detalhe/pedidos-detalhe.component';
 import { PedidosListaComponent } from './components/pedidos/pedidos-lista/pedidos-lista.component';
+import { ProdutosListaComponent } from './components/produtos/produtos-lista/produtos-lista.component';
+import { ProdutosDetalheComponent } from './components/produtos/produtos-detalhe/produtos-detalhe.component';
+import { ProdutosComponent } from './components/produtos/produtos.component';
 
 
 
@@ -64,7 +67,10 @@ import { PedidosListaComponent } from './components/pedidos/pedidos-lista/pedido
       RegistrationComponent,
       PedidosComponent,
       PedidosDetalheComponent,
-      PedidosListaComponent
+      PedidosListaComponent,
+      ProdutosComponent,
+      ProdutosListaComponent,
+      ProdutosDetalheComponent
    ],
   imports: [
     BrowserModule,

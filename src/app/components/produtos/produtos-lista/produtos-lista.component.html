@@ -9,15 +9,15 @@
         <input
         type="text"
         class="form-control "
-        placeholder="Pesquisa por nome do aluno"
+        placeholder="Pesquisa por nome do produto"
         [(ngModel)]="filtroLista"
         >
       </div>
     </div>
 <div>
-  <a class="d-flex btn btn-outline-primary" routerLink="/alunos/detalhe">
+  <a class="d-flex btn btn-outline-primary" routerLink="/produtos/detalhe">
     <i class="fa fa-plus-circle my-1"></i>
-    <b class="ml-1 d-none d-sm-block">Novo</b>
+    <b class="ml-1 d-none d-sm-block">Novo Produto</b>
   </a>
 </div>
   </div>
@@ -25,40 +25,38 @@
     <thead class="thead-dark">
       <tr>
         <th>#</th>
-        <th>Nome</th>
-        <th>Numero Celular</th>
-        <th>Professor</th>
-        <th>Cpf</th>
-        <th>Pagamento</th>
-        <th>Data Aula</th>
+        <th>Cod</th>
+        <th>Descrição</th>
+        <th>Quantidade</th>
+        <th>Plano</th>
+        <th>Preco</th>
         <th>Opções</th>
       </tr>
     </thead>
-    <tbody *ngIf="alunos">
-        <tr *ngFor="let aluno of alunosFiltrados" >
-          <td>{{aluno.id}}</td>
-          <td>{{aluno.nome}}</td>
-          <td>{{aluno.numeroCelular}}</td>
-          <td>{{aluno?.professor?.nome}}</td>
-          <td>{{aluno.cpf}}</td>
-          <td>{{aluno.statusPagamento}}</td>
-          <td>{{aluno.agendaAluno?.data | DateTimeFormatPipe}}</td>
+    <tbody *ngIf="produtos">
+        <tr *ngFor="let produto of produtosFiltrados" >
+          <td>{{produto.id}}</td>
+          <td>{{produto.codProduto}}</td>
+          <td>{{produto.descricao}}</td>
+          <td>{{produto.quantidade}}</td>
+          <td>{{produto.plano}}</td>
+          <td>{{produto.precoVenda}}</td>
           <td>
-            <button type="button" class="btn btn-primary btn-sm mr-2" tooltip="Editar" (click)="detalheAluno(aluno.id)">
+            <button type="button" class="btn btn-primary btn-sm mr-2" tooltip="Editar" (click)="detalheProduto(produto.id)">
               <i class="fa fa-edit"></i>
               Editar
             </button>
-            <button type="button" class="btn btn-secondary btn-sm" tooltip="Exluir" (click)="openModal($event, template, aluno.id)">
+            <button type="button" class="btn btn-secondary btn-sm" tooltip="Exluir" (click)="openModal($event, template, produto.id)">
               <i class="fa fa-trash"></i>
               Excluir
             </button>
           </td>
         </tr>
     </tbody>
-    <tfoot *ngIf="!alunos">
+    <tfoot *ngIf="!produtos">
       <tr>
         <td colspan="8" class="text-center">
-          <h5>Nenhum aluno encontrado</h5>
+          <h5>Nenhum produto encontrado</h5>
         </td>
       </tr>
     </tfoot>
@@ -66,12 +64,14 @@
 </div>
   <ng-template #template>
     <div class="modal-body text-center">
-      <p>Tem certeza que quer deletar o Aluno Código {{this.alunoId}}?</p>
+      <p>Tem certeza que quer deletar o Aluno Código {{this.produtoId}}?</p>
       <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
       <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
     </div>
   </ng-template>
 
   <router-outlet></router-outlet>
+
+
 
 

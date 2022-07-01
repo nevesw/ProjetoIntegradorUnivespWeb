@@ -1,1 +1,57 @@
+<div class="card rouded shadow-sm p-3">
+
+  <div class="d-flex">
+    <div class="flex-fill pr-3">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Filtro:</div>
+        </div>
+        <input
+        type="text"
+        class="form-control "
+        placeholder="Pesquisa por dia da semana"
+        [(ngModel)]="filtroLista"
+        >
+      </div>
+    </div>
+<div>
+</div>
+  </div>
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Data Agendada</th>
+        <th>Data Término</th>
+        <th>Dia Semana</th>
+        <th>Professor</th>
+        <th>Disponivel</th>
+
+      </tr>
+    </thead>
+    <tbody *ngIf="agendas">
+        <tr *ngFor="let agenda of agendas" >
+          <td>{{agenda.id}}</td>
+          <td>{{agenda.data | DateTimeFormatPipe}}</td>
+          <td>{{agenda.horario | DateTimeFormatPipe}}</td>
+          <td>{{agenda.diaSemanaAulaAgendada}}</td>
+          <td>{{agenda.professor}}</td>
+          <td>{{agenda.disponivel}}</td>
+
+        </tr>
+    </tbody>
+    <tfoot *ngIf="!agendas">
+      <tr>
+        <td colspan="8" class="text-center">
+          <h5>Nenhuma aula encontrado</h5>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
 <router-outlet></router-outlet>
+
+
+
+

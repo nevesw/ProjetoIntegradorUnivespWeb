@@ -16,6 +16,9 @@ import { AulasDetalheComponent } from './components/aulas/aulas-detalhe/aulas-de
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { PedidosListaComponent } from './components/pedidos/pedidos-lista/pedidos-lista.component';
 import { PedidosDetalheComponent } from './components/pedidos/pedidos-detalhe/pedidos-detalhe.component';
+import { ProdutosComponent } from './components/produtos/produtos.component';
+import { ProdutosListaComponent } from './components/produtos/produtos-lista/produtos-lista.component';
+import { ProdutosDetalheComponent } from './components/produtos/produtos-detalhe/produtos-detalhe.component';
 
 const routes: Routes = [
   {
@@ -62,6 +65,15 @@ const routes: Routes = [
       {path:'lista', component: PedidosListaComponent},
       {path:'detalhe', component: PedidosDetalheComponent},
       {path:'detalhe/:id', component: PedidosDetalheComponent},
+    ]
+  },
+  {path:'produtos', redirectTo: 'produtos/lista'},
+  {
+    path:'produtos', component: ProdutosComponent,
+    children: [
+      {path:'lista', component: ProdutosListaComponent},
+      {path:'detalhe', component: ProdutosDetalheComponent},
+      {path:'detalhe/:id', component: ProdutosDetalheComponent},
     ]
   },
   {path:'', redirectTo: 'user/login', pathMatch: 'full'},

@@ -8,7 +8,11 @@ export interface Pedido {
   descricao: string;
   dataPedido?: Date;
   quantidade: number;
+  pagamentoId: number;
+  alunoId: number;
+  produtoId: number;
   pagamento: Pagamento;
   aluno: Aluno;
   produto: Produto;
+  tipoPagamento: string;
 }

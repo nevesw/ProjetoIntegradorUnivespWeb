@@ -4,5 +4,5 @@ export interface Produto {
   descricao: string;
   quantidade: number;
   precoVenda: number;
-  dataVenda?: Date;
+  plano: string;
 }

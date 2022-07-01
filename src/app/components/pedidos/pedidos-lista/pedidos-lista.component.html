@@ -30,15 +30,16 @@
         <th>Quantidade</th>
         <th>Pagamento</th>
         <th>Data Pedido</th>
+        <th>Opções</th>
       </tr>
     </thead>
     <tbody *ngIf="pedidos">
         <tr *ngFor="let pedido of pedidosFiltrados" >
           <td>{{pedido.id}}</td>
-          <td>{{pedido.descricao}</td>
+          <td>{{pedido.produto.descricao}}</td>
           <td>{{pedido.aluno.nome}}</td>
-          <td>{{pedido.quantidade}</td>
-          <td>{{pedido.pagamento.tipoPagamento}}</td>
+          <td>{{pedido.quantidade}}</td>
+          <td>{{pedido.tipoPagamento}}</td>
           <td>{{pedido.dataPedido | DateTimeFormatPipe}}</td>
           <td>
             <button type="button" class="btn btn-primary btn-sm mr-2" tooltip="Editar" (click)="detalhePedido(pedido.id)">
